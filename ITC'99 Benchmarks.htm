@@ -1,0 +1,991 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0041)http://www.cad.polito.it/tools/itc99.html -->
+<HTML><HEAD><TITLE>CAD Group: ITC'99 Benchmarks (2nd release)</TITLE>
+<META content="(!) CAD Group" name=author>
+<META content="cad, atpg, bist, fault simulation, evolutionary algorithms" 
+name=keywords>
+<META content="Politecnico di Torino - CAD Group web page" name=description>
+<META http-equiv=Content-Type content="text/html; charset=ISO-8859-1">
+<META content="MSHTML 6.00.2800.1400" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<TABLE cellSpacing=0 cellPadding=2 width="100%" bgColor=#ffcc66>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#ffffff 
+        border=0><TBODY>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD vAlign=center align=left><B><FONT size=+3>CAD Group: ITC'99 
+            Benchmarks (2nd release)</FONT></B> </TD>
+          <TD vAlign=center align=right><IMG 
+            alt="CAD Group: ITC'99 Benchmarks (2nd release)" 
+            src="CAD Group ITC'99 Benchmarks (2nd release)_soubory/tools.gif" 
+            border=0> </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>&nbsp;
+<P>
+<DIV align=justify>
+<H2>Overview</H2>The <A 
+href="http://www.cerc.utexas.edu/itc99-benchmarks/bench.html">ITC'99 
+benchmarks</A> developed in the <A href="http://www.cad.polito.it/">CAD 
+Group</A> at Politecnico di Torino (I99T) are a set of circuits whose 
+characteristics are typical of synthesized circuits. For each bench both the 
+RT-level VHDL description and the synthesized Gate-Level netlist are available. 
+In April 2002 new RT-Level VHDL benchmarks were added to the set and more 
+gate-level circuits were synthesized. <BR>I99T benchmarks are available from <A 
+href="http://www.cad.polito.it/tools/itc99.html">http://www.cad.polito.it/tools/itc99.html</A> 
+while further benchmarks and tools developed by the CAD Group are available <A 
+href="http://www.cad.polito.it/tools/">here.</A> 
+<P>You can find a detailed descriptions of benchmarks and an experimental 
+RT-level ATPG tool in the article <A 
+href="http://www.cad.polito.it/pap/FullDB/exact/dt2000.html">"RT-Level ITC 99 
+Benchmarks and First ATPG Results",</A> <A 
+href="http://www.computer.org/dt/"><I>IEEE Design &amp; Test of 
+Computers,</I></A> July-August 2000. We also maintain an updated <A 
+href="http://www.cad.polito.it/tools/itc99ref.html">list of references</A> to 
+research results obtained on these benchmarks. 
+<P>Benchmarks main characteristics are sketched below: 
+<DIV align=left>
+<UL>
+  <LI>Fully synthesizable RT-Level VHDL descriptions (in <I>Synopsys Design 
+  Compiler</I> description styles). 
+  <LI>No compiler specific directive. 
+  <LI>Require only <I>IEEE standard logic</I> and <I>arithmetic</I> packages. 
+  <LI>Completely synchronous circuits. 
+  <LI>One single-phase clock signal connected directly to memory elements. 
+  <LI>Global reset signal always available. 
+  <LI>No internal memories (except register banks). 
+  <LI>No 3-state busses. 
+  <LI>No or wired connections. </LI></UL></DIV>
+<P>VHDL RT-Level descriptions range from a small, monolithic circuit (1 entity, 
+1 process, 70 lines) to a large, multi-entity, multi-process one (11 entities, 
+33 processes, 1,424 lines). At the Gate-Level, netlists range from an s27-sized 
+circuit (2 inputs, 29 gates, 4 flip-flops, 150 faults) to a circuit more than 3 
+times larger that the largest ISCAS'89 (37 inputs, 69,917 gates, 3,320 
+flip-flops, 429,712 faults). 
+<P>VHDL descriptions were synthesized to netlists using both standard (std) 
+options and optimized (opt) options. The former may contains completely useless 
+gates with no inputs and no outputs. Optimized gate-level circuits superseded 
+"stripped" (e.g., b04s) gate-level circuits. 
+<P>
+<TABLE cellPadding=3 align=center border=1>
+  <TBODY>
+  <TR>
+    <TD align=middle rowSpan=2><B>NAME</B></TD>
+    <TD align=middle colSpan=2><B>VHDL</B></TD>
+    <TD align=middle rowSpan=2><B>TYPE</B>
+    <TD align=middle colSpan=6><B>GATE LEVEL</B></TD></TD></B></TD>
+    <TD align=middle colSpan=2><B>FAULT</B></TD></TR><B>
+  <TR><B>
+    <TD align=right><B>LINE</B></TD>
+    <TD align=right><B>PROC</B></TD>
+    <TD align=right><B>GATE</B></TD>
+    <TD align=right><B>PI</B></TD>
+    <TD align=right><B>PO</B></TD>
+    <TD align=right><B>FF</B></TD>
+    <TD align=right><B>L0</B></TD>
+    <TD align=right><B>L1</B></TD>
+    <TD align=right><B>COMP</B></TD>
+    <TD align=right><B>COLL</B></TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b01</TD>
+    <TD align=right rowSpan=2>110</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>49</TD>
+    <TD align=right>2</TD>
+    <TD align=right>2</TD>
+    <TD align=right>5</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>260</TD>
+    <TD align=right>114</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>49</TD>
+    <TD align=right>2</TD>
+    <TD align=right>2</TD>
+    <TD align=right>5</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>260</TD>
+    <TD align=right>118</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b02</TD>
+    <TD align=right rowSpan=2>70</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>28</TD>
+    <TD align=right>1</TD>
+    <TD align=right>1</TD>
+    <TD align=right>4</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>148</TD>
+    <TD align=right>62</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>27</TD>
+    <TD align=right>1</TD>
+    <TD align=right>1</TD>
+    <TD align=right>4</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>144</TD>
+    <TD align=right>60</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b03</TD>
+    <TD align=right rowSpan=2>141</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>160</TD>
+    <TD align=right>4</TD>
+    <TD align=right>4</TD>
+    <TD align=right>30</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>872</TD>
+    <TD align=right>386</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>153</TD>
+    <TD align=right>4</TD>
+    <TD align=right>4</TD>
+    <TD align=right>30</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>844</TD>
+    <TD align=right>386</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b04</TD>
+    <TD align=right rowSpan=2>102</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>737</TD>
+    <TD align=right>8</TD>
+    <TD align=right>11</TD>
+    <TD align=right>66</TD>
+    <TD align=right>8</TD>
+    <TD align=right>4</TD>
+    <TD align=right>4,102</TD>
+    <TD align=right>1,646</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>628</TD>
+    <TD align=right>11</TD>
+    <TD align=right>8</TD>
+    <TD align=right>66</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>3,532</TD>
+    <TD align=right>1,502</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b05</TD>
+    <TD align=right rowSpan=2>332</TD>
+    <TD align=right rowSpan=2>3</TD>
+    <TD align=middle>std<SUP>*</SUP></TD>
+    <TD align=right>998</TD>
+    <TD align=right>1</TD>
+    <TD align=right>36</TD>
+    <TD align=right>34</TD>
+    <TD align=right>8</TD>
+    <TD align=right>33</TD>
+    <TD align=right>5,732</TD>
+    <TD align=right>2,440</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>574</TD>
+    <TD align=right>1</TD>
+    <TD align=right>36</TD>
+    <TD align=right>34</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>3,214</TD>
+    <TD align=right>1,522</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b06</TD>
+    <TD align=right rowSpan=2>128</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>56</TD>
+    <TD align=right>2</TD>
+    <TD align=right>6</TD>
+    <TD align=right>9</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>276</TD>
+    <TD align=right>134</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>55</TD>
+    <TD align=right>2</TD>
+    <TD align=right>6</TD>
+    <TD align=right>9</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>272</TD>
+    <TD align=right>134</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b07</TD>
+    <TD align=right rowSpan=2>92</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>441</TD>
+    <TD align=right>1</TD>
+    <TD align=right>8</TD>
+    <TD align=right>49</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>2,460</TD>
+    <TD align=right>1,072</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>427</TD>
+    <TD align=right>1</TD>
+    <TD align=right>8</TD>
+    <TD align=right>49</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>2,446</TD>
+    <TD align=right>1,111</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b08</TD>
+    <TD align=right rowSpan=2>89</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>183</TD>
+    <TD align=right>9</TD>
+    <TD align=right>4</TD>
+    <TD align=right>21</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>994</TD>
+    <TD align=right>442</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>171</TD>
+    <TD align=right>9</TD>
+    <TD align=right>4</TD>
+    <TD align=right>21</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>932</TD>
+    <TD align=right>407</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b09</TD>
+    <TD align=right rowSpan=2>103</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>170</TD>
+    <TD align=right>1</TD>
+    <TD align=right>1</TD>
+    <TD align=right>28</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>946</TD>
+    <TD align=right>403</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>160</TD>
+    <TD align=right>1</TD>
+    <TD align=right>1</TD>
+    <TD align=right>28</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>902</TD>
+    <TD align=right>410</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b10</TD>
+    <TD align=right rowSpan=2>167</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>206</TD>
+    <TD align=right>11</TD>
+    <TD align=right>6</TD>
+    <TD align=right>17</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>1,118</TD>
+    <TD align=right>485</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>180</TD>
+    <TD align=right>11</TD>
+    <TD align=right>6</TD>
+    <TD align=right>17</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>1,010</TD>
+    <TD align=right>454</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b11</TD>
+    <TD align=right rowSpan=2>118</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>770</TD>
+    <TD align=right>7</TD>
+    <TD align=right>6</TD>
+    <TD align=right>31</TD>
+    <TD align=right>6</TD>
+    <TD align=right>5</TD>
+    <TD align=right>4,332</TD>
+    <TD align=right>1,726</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>548</TD>
+    <TD align=right>7</TD>
+    <TD align=right>6</TD>
+    <TD align=right>31</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>3,276</TD>
+    <TD align=right>1,422</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b12</TD>
+    <TD align=right rowSpan=2>569</TD>
+    <TD align=right rowSpan=2>4</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>1,076</TD>
+    <TD align=right>5</TD>
+    <TD align=right>6</TD>
+    <TD align=right>121</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>6,306</TD>
+    <TD align=right>2,856</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>1,006</TD>
+    <TD align=right>5</TD>
+    <TD align=right>6</TD>
+    <TD align=right>121</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>5,994</TD>
+    <TD align=right>2,805</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b13</TD>
+    <TD align=right rowSpan=2>296</TD>
+    <TD align=right rowSpan=2>5</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>362</TD>
+    <TD align=right>10</TD>
+    <TD align=right>10</TD>
+    <TD align=right>53</TD>
+    <TD align=right>2</TD>
+    <TD align=right>1</TD>
+    <TD align=right>1,906</TD>
+    <TD align=right>830</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>317</TD>
+    <TD align=right>10</TD>
+    <TD align=right>10</TD>
+    <TD align=right>53</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>1,694</TD>
+    <TD align=right>779</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b14</TD>
+    <TD align=right rowSpan=2>509</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>10,098</TD>
+    <TD align=right>32</TD>
+    <TD align=right>54</TD>
+    <TD align=right>245</TD>
+    <TD align=right>18</TD>
+    <TD align=right>6</TD>
+    <TD align=right>58,348</TD>
+    <TD align=right>22,634</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>5,678</TD>
+    <TD align=right>32</TD>
+    <TD align=right>54</TD>
+    <TD align=right>245</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>35,264</TD>
+    <TD align=right>15,999</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b14_1</TD>
+    <TD align=right rowSpan=2>509</TD>
+    <TD align=right rowSpan=2>1</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>6,900</TD>
+    <TD align=right>32</TD>
+    <TD align=right>54</TD>
+    <TD align=right>245</TD>
+    <TD align=right>13</TD>
+    <TD align=right>6</TD>
+    <TD align=right>39,890</TD>
+    <TD align=right>15,492</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>4,379</TD>
+    <TD align=right>32</TD>
+    <TD align=right>54</TD>
+    <TD align=right>245</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>27,040</TD>
+    <TD align=right>12,307</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b15</TD>
+    <TD align=right rowSpan=2>671</TD>
+    <TD align=right rowSpan=2>3</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>8,922</TD>
+    <TD align=right>36</TD>
+    <TD align=right>70</TD>
+    <TD align=right>449</TD>
+    <TD align=right>21</TD>
+    <TD align=right>9</TD>
+    <TD align=right>53,018</TD>
+    <TD align=right>21,776</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>7,577</TD>
+    <TD align=right>36</TD>
+    <TD align=right>70</TD>
+    <TD align=right>449</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>47,414</TD>
+    <TD align=right>21,072</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b15_1</TD>
+    <TD align=right rowSpan=2>671</TD>
+    <TD align=right rowSpan=2>3</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>13,098</TD>
+    <TD align=right>36</TD>
+    <TD align=right>70</TD>
+    <TD align=right>449</TD>
+    <TD align=right>169</TD>
+    <TD align=right>14</TD>
+    <TD align=right>75,618</TD>
+    <TD align=right>28,787</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>7,974</TD>
+    <TD align=right>36</TD>
+    <TD align=right>70</TD>
+    <TD align=right>448</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>50,384</TD>
+    <TD align=right>21,852</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b17</TD>
+    <TD align=right rowSpan=2>810</TD>
+    <TD align=right rowSpan=2>15</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>32,326</TD>
+    <TD align=right>37</TD>
+    <TD align=right>97</TD>
+    <TD align=right>1,415</TD>
+    <TD align=right>243</TD>
+    <TD align=right>37</TD>
+    <TD align=right>190,784</TD>
+    <TD align=right>76,485</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>24,305</TD>
+    <TD align=right>37</TD>
+    <TD align=right>97</TD>
+    <TD align=right>1,414</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>154,220</TD>
+    <TD align=right>68,037</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b17_1</TD>
+    <TD align=right rowSpan=2>810</TD>
+    <TD align=right rowSpan=2>15</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>39,665</TD>
+    <TD align=right>37</TD>
+    <TD align=right>97</TD>
+    <TD align=right>1,415</TD>
+    <TD align=right>511</TD>
+    <TD align=right>47</TD>
+    <TD align=right>230,360</TD>
+    <TD align=right>87,958</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>24,571</TD>
+    <TD align=right>37</TD>
+    <TD align=right>97</TD>
+    <TD align=right>1,412</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>156,256</TD>
+    <TD align=right>67,693</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b18</TD>
+    <TD align=right rowSpan=2>1,424</TD>
+    <TD align=right rowSpan=2>33</TD>
+    <TD align=middle>std<SUP>**</SUP></TD>
+    <TD align=right>114,621</TD>
+    <TD align=right>36</TD>
+    <TD align=right>23</TD>
+    <TD align=right>3,320</TD>
+    <TD align=right>1,072</TD>
+    <TD align=right>110</TD>
+    <TD align=right>667,008</TD>
+    <TD align=right>263,967</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>73,243</TD>
+    <TD align=right>36</TD>
+    <TD align=right>23</TD>
+    <TD align=right>3,270</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>463,570</TD>
+    <TD align=right>206,736</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b18_1</TD>
+    <TD align=right rowSpan=2>1,424</TD>
+    <TD align=right rowSpan=2>33</TD>
+    <TD align=middle>std<SUP>**</SUP></TD>
+    <TD align=right>108,482</TD>
+    <TD align=right>36</TD>
+    <TD align=right>23</TD>
+    <TD align=right>3,320</TD>
+    <TD align=right>1,061</TD>
+    <TD align=right>109</TD>
+    <TD align=right>630,894</TD>
+    <TD align=right>250,717</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>71,611</TD>
+    <TD align=right>36</TD>
+    <TD align=right>23</TD>
+    <TD align=right>3,270</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>453,088</TD>
+    <TD align=right>202,812</TD></TR>
+  <TR>
+    <TD align=right>b19</TD>
+    <TD align=right>1,491</TD>
+    <TD align=right>10</TD>
+    <TD align=middle>std<SUP>**</SUP></TD>
+    <TD align=right>231,320</TD>
+    <TD align=right>21</TD>
+    <TD align=right>30</TD>
+    <TD align=right>6,642</TD>
+    <TD align=right>2,153</TD>
+    <TD align=right>217</TD>
+    <TD align=right>1,345,442</TD>
+    <TD align=right>533,142</TD></TR>
+  <TR>
+    <TD align=right>b19_1</TD>
+    <TD align=right>1,491</TD>
+    <TD align=right>10</TD>
+    <TD align=middle>std<SUP>**</SUP></TD>
+    <TD align=right>219,424</TD>
+    <TD align=right>21</TD>
+    <TD align=right>30</TD>
+    <TD align=right>6,642</TD>
+    <TD align=right>2,132</TD>
+    <TD align=right>218</TD>
+    <TD align=right>1,275,720</TD>
+    <TD align=right>507,476</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b20</TD>
+    <TD align=right rowSpan=2>1,085</TD>
+    <TD align=right rowSpan=2>3</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>20,226</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>490</TD>
+    <TD align=right>43</TD>
+    <TD align=right>14</TD>
+    <TD align=right>117,750</TD>
+    <TD align=right>45,395</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>12,501</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>490</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>78,788</TD>
+    <TD align=right>35,667</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b20_1</TD>
+    <TD align=right rowSpan=2>1,085</TD>
+    <TD align=right rowSpan=2>3</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>14,443</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>490</TD>
+    <TD align=right>33</TD>
+    <TD align=right>14</TD>
+    <TD align=right>83,906</TD>
+    <TD align=right>33,191</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>10,709</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>490</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>67,158</TD>
+    <TD align=right>30,749</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b21</TD>
+    <TD align=right rowSpan=2>1,089</TD>
+    <TD align=right rowSpan=2>3</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>20,571</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>490</TD>
+    <TD align=right>43</TD>
+    <TD align=right>15</TD>
+    <TD align=right>120,000</TD>
+    <TD align=right>46,090</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>12,678</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>490</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>79,556</TD>
+    <TD align=right>35,994</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b21_1</TD>
+    <TD align=right rowSpan=2>1,089</TD>
+    <TD align=right rowSpan=2>3</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>14,442</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>490</TD>
+    <TD align=right>33</TD>
+    <TD align=right>15</TD>
+    <TD align=right>84,084</TD>
+    <TD align=right>32,884</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>10,206</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>490</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>63,732</TD>
+    <TD align=right>29,091</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b22</TD>
+    <TD align=right rowSpan=2>1,613</TD>
+    <TD align=right rowSpan=2>4</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>29,951</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>735</TD>
+    <TD align=right>63</TD>
+    <TD align=right>11</TD>
+    <TD align=right>174,786</TD>
+    <TD align=right>67,472</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>18,086</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>703</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>113,308</TD>
+    <TD align=right>51,277</TD></TR>
+  <TR>
+    <TD align=right rowSpan=2>b22_1</TD>
+    <TD align=right rowSpan=2>1,613</TD>
+    <TD align=right rowSpan=2>4</TD>
+    <TD align=middle>std</TD>
+    <TD align=right>21,772</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>735</TD>
+    <TD align=right>50</TD>
+    <TD align=right>14</TD>
+    <TD align=right>126,670</TD>
+    <TD align=right>49,881</TD></TR>
+  <TR>
+    <TD align=middle>opt</TD>
+    <TD align=right>15,713</TD>
+    <TD align=right>32</TD>
+    <TD align=right>22</TD>
+    <TD align=right>703</TD>
+    <TD align=right>0</TD>
+    <TD align=right>0</TD>
+    <TD align=right>98,006</TD>
+    <TD align=right>44,771</TD></TR></TBODY></TABLE>
+<TABLE align=center>
+  <TBODY>
+  <TR>
+    <TD colSpan=2><SMALL><B>CAPTION</B></SMALL> </TD></TR>
+  <TR>
+    <TD><SMALL><B>LINES</B>: VHDL lines<BR><B>PROC</B>: Number of 
+      process<BR><B>TYPE</B>: Synthesis type (standard or 
+      optimized)<BR><B>GATES</B>: Number of gates<BR><B>PI</B>: Number of 
+      primary inputs<BR></SMALL></TD>
+    <TD><SMALL><B>PO</B>: Number of primary outputs<BR><B>FF</B>: Number of 
+      <I>flip-flops</I><BR><B>L0/1</B>: Number of 
+      <I>logic-zero</I>/<I>logic-one</I><BR><B>COMP</B>: Number of faults in 
+      complete fault list<BR><B>COLL</B>: Number of faults in collapsed 
+      (reduced) fault list<BR></SMALL></TD></TR>
+  <TR>
+    <TD colSpan=2><SMALL><B>NOTES</B></SMALL> </TD></TR>
+  <TR>
+    <TD colSpan=2><SMALL><B>*</B>) More than one connections between the same 
+      pair of gates<BR><B>**</B>) Dandling 
+gates<BR></SMALL></TD></TR></TBODY></TABLE></P></DIV>
+<P>
+<H2>Original Functionality</H2>All benchmarks are syntactically correct, but, 
+due to the development process, there is no guarantee that VHDL descriptions are 
+functionally meaningful. However, to help researchers better understand their 
+results, the original functionalities of VHDL descriptions is reported in the 
+following table. 
+<P>
+<TABLE cellSpacing=0 cellPadding=2 align=center border=1>
+  <TBODY>
+  <TR>
+    <TH>NAME</TH>
+    <TH>ORIGINAL FUNCTIONALITY</TH></TR>
+  <TR>
+    <TD align=middle>b01</TD>
+    <TD>FSM that compares serial flows</TD></TR>
+  <TR>
+    <TD align=middle>b02</TD>
+    <TD>FSM that recognizes BCD numbers</TD></TR>
+  <TR>
+    <TD align=middle>b03</TD>
+    <TD>Resource arbiter</TD></TR>
+  <TR>
+    <TD align=middle>b04</TD>
+    <TD>Compute min and max</TD></TR>
+  <TR>
+    <TD align=middle>b05</TD>
+    <TD>Elaborate the contents of a memory</TD></TR>
+  <TR>
+    <TD align=middle>b06</TD>
+    <TD>Interrupt handler</TD></TR>
+  <TR>
+    <TD align=middle>b07</TD>
+    <TD>Count points on a straight line</TD></TR>
+  <TR>
+    <TD align=middle>b08</TD>
+    <TD>Find inclusions in sequences of numbers</TD></TR>
+  <TR>
+    <TD align=middle>b09</TD>
+    <TD>Serial to serial converter</TD></TR>
+  <TR>
+    <TD align=middle>b10</TD>
+    <TD>Voting system</TD></TR>
+  <TR>
+    <TD align=middle>b11</TD>
+    <TD>Scramble string with variable cipher</TD></TR>
+  <TR>
+    <TD align=middle>b12</TD>
+    <TD>1-player game (guess a sequence)</TD></TR>
+  <TR>
+    <TD align=middle>b13</TD>
+    <TD>Interface to meteo sensors</TD></TR>
+  <TR>
+    <TD align=middle>b14</TD>
+    <TD>Viper processor (subset)</TD></TR>
+  <TR>
+    <TD align=middle>b15</TD>
+    <TD>80386 processor (subset)</TD></TR>
+  <TR>
+    <TD align=middle>b16</TD>
+    <TD>Hard to initialize circuit (parametric)</TD></TR>
+  <TR>
+    <TD align=middle>b17</TD>
+    <TD>Three copies of b15</TD></TR>
+  <TR>
+    <TD align=middle>b18</TD>
+    <TD>Two copies of b14 and two of b17</TD></TR>
+  <TR>
+    <TD align=middle>b19</TD>
+    <TD>Two copies of b14 and two of b17</TD></TR>
+  <TR>
+    <TD align=middle>b20</TD>
+    <TD>A copy of b14 and a modified version of b14</TD></TR>
+  <TR>
+    <TD align=middle>b21</TD>
+    <TD>Two copies of b14</TD></TR>
+  <TR>
+    <TD align=middle>b22</TD>
+    <TD>A copy of b14 and two modified versions of b14</TD></TR></TBODY></TABLE>
+<P>
+<DIV></DIV><!-- <h2>Published Results on I99T</h2> --><!-- <div align="justify"> --><!-- </div> -->
+<H2>Download</H2>Click on a file to start download, or follow <A 
+href="http://www.cad.polito.it/analog/itc99.html">this link</A> to peek who 
+already downloaded them. <BR><B>Notez Bien:</B> last upload: 18 June 2003. <BR><!--
+	  If you publish any results with these circuits, please
+    send the citation to 
+    <code>&lt;<a href="mailto:itc99@cad.polito.it">itc99@cad.polito.it</a>&gt;</code>
+    to let us maintain a <a href="./itc99ref.html">list of references.</a>
+-->
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli2.tar.gz">itc99-poli2.tar.gz</A>&nbsp;</TD>
+    <TD>Complete tarball including VHDL descriptions, EDIF netlists and fault 
+      lists (126,851,723 bytes)</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli2-vhd.tar.gz">itc99-poli2-vhd.tar.gz</A>&nbsp;</TD>
+    <TD>RT-Level VHDL descriptions (65,085 bytes)</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli2-edf.tar.gz">itc99-poli2-edf.tar.gz</A>&nbsp;</TD>
+    <TD>Synthesized netlists in edf (EDIF) format (48,998,976 bytes)</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli2-fau.tar.gz">itc99-poli2-fau.tar.gz</A>&nbsp;</TD>
+    <TD>Gate-level fault lists (51,906,297 bytes)</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli2-bench.tar.gz">itc99-poli2-bench.tar.gz</A>&nbsp;</TD>
+    <TD>Synthesized netlists in bench (ISCAS'89) format (18,987,069 
+      bytes)<SUP>1</SUP></TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli2-blif.tar.gz">itc99-poli2-blif.tar.gz</A>&nbsp;</TD>
+    <TD>Synthesized netlists in blif format (6,828,380 bytes)</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli2-breset.tar.gz">itc99-poli2-breset.tar.gz</A>&nbsp;</TD>
+    <TD>Some netlists in bench format with explicit resets (2,446,431 
+      bytes)<SUP>2</SUP></TD></TR>
+  <TR>
+    <TD colSpan=2><SMALL><SUP>1</SUP> due to format restrictions, not all 
+      circuits are available in bench format.</SMALL>&nbsp;</TD></TR>
+  <TR>
+    <TD colSpan=2><SMALL><SUP>2</SUP> netlists modified by <A 
+      href="mailto:phadoong@ece.wisc.edu">Marong Phadoongsidhi</A>, the perl 
+      script is included in the tarball.</SMALL>&nbsp;</TD></TR></TBODY></TABLE>
+<P>Previous release 
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli.tar.gz">itc99-poli.tar.gz</A>&nbsp;</TD>
+    <TD>Complete tarball (10,110,139 bytes)</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli-vhd.tar.gz">itc99-poli-vhd.tar.gz</A>&nbsp;</TD>
+    <TD>RT-Level VHDL descriptions (25,019 bytes)</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli-edf.tar.gz">itc99-poli-edf.tar.gz</A>&nbsp;</TD>
+    <TD>Synthesized netlists in flattened EDIF format (6,126,783 bytes)</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli-bench.tar.gz">itc99-poli-bench.tar.gz</A>&nbsp;</TD>
+    <TD>Synthesized netlists in bench (ISCAS'89) format (573,709 
+      bytes)<SUP>*</SUP></TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.cad.polito.it/tools/tar/itc99-poli-fau.tar.gz">itc99-poli-fau.tar.gz</A>&nbsp;</TD>
+    <TD>Gate-level fault lists (3,359,547 bytes)</TD></TR>
+  <TR>
+    <TD colSpan=2><SMALL><SUP>*</SUP> due to format restrictions, not all 
+      circuits are available in bench format.</SMALL>&nbsp;</TD></TR></TBODY></TABLE>
+<H2>Contact information</H2>Please report us any problem, result, comment or 
+constructive criticism using this email alias 
+<P>
+<CENTER><CODE>&lt;<A 
+href="mailto:itc99@cad.polito.it">itc99@cad.polito.it</A>&nbsp;&gt;</CODE> 
+</CENTER>
+<P>Otherwise, you can contact researchers individually 
+<TABLE cellPadding=10 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE border=0>
+        <TBODY>
+        <TR>
+          <TD><B><A href="http://www.cad.polito.it/staff/sonza/">Matteo Sonza 
+            Reorda</A></B></TD>
+          <TD>&nbsp;</TD>
+          <TD>&lt;<A 
+            href="mailto:matteo[.]sonzareorda[@]polito[.]it"><TT>matteo<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>.<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>sonzareorda<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>@<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>polito<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>.<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>it</TT></A>&gt;</TD>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD><B><A href="http://www.cad.polito.it/staff/corno/">Fulvio 
+            Corno</A></B></TD>
+          <TD>&nbsp;</TD>
+          <TD>&lt;<A href="mailto:corno[@]polito[.]it"><TT>corno<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>@<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>polito<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>.<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>it</TT></A>&gt;</TD>
+          <TD>&nbsp;</TD></TR>
+        <TR>
+          <TD><B><A href="http://www.cad.polito.it/staff/squillero/">Giovanni 
+            Squillero</A></B></TD>
+          <TD>&nbsp;</TD>
+          <TD>&lt;<A 
+            href="mailto:giovanni[.]squillero[@]polito[.]it"><TT>giovanni<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>.<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>squillero<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>@<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>polito<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>.<SPAN 
+            style="FONT-SIZE: 1px">&nbsp;</SPAN>it</TT></A>&gt;</TD>
+          <TD>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- <p> --><!-- <table width="100%"> --><!-- <tr> --><!-- <td align="right"><a href="http://validator.w3.org/check/referer"><img border="0" src="/icons/Logo/vh40.gif" alt="Valid HTML 4.0!" height="31" width="88"></a>&nbsp;</td> --><!-- </tr> --><!-- </table> -->&nbsp;
+<P>
+<TABLE cellSpacing=0 cellPadding=2 width="100%" bgColor=#ffcc66>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#ffffff 
+        border=0><TBODY>
+        <TR>
+          <TD align=left>&nbsp;</TD>
+          <TD align=left><FONT size=-1><I>© Copyright Politecnico di 
+            Torino</I> <BR><A 
+            href="mailto:webmaster@www.cad.polito.it">webmaster@www.cad.polito.it</A> 
+            <BR>(/tools/itc99.html - 18-Jun-2003) </FONT></TD>
+          <TD align=right>
+            <TABLE cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD vAlign=center align=middle><A 
+                  href="http://www.cad.polito.it/tools/"><IMG alt=up 
+                  src="CAD Group ITC'99 Benchmarks (2nd release)_soubory/arrow_up.gif" 
+                  border=0></A> </TD>
+                <TD vAlign=center align=middle><A 
+                  href="http://www.cad.polito.it/tools/itc99ref.html"><IMG 
+                  alt=next 
+                  src="CAD Group ITC'99 Benchmarks (2nd release)_soubory/arrow_right.gif" 
+                  border=0></A> </TD>
+                <TD>&nbsp;</TD>
+                <TD vAlign=center align=right><A 
+                  href="http://www.cad.polito.it/"><IMG alt="CAD Group" 
+                  src="CAD Group ITC'99 Benchmarks (2nd release)_soubory/home.gif" 
+                  border=0></A> 
+  </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></P></B></B></BODY></HTML>
